@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int currentAmmo;
     private int maxAmmo = 100;
+
+    private bool canReload = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,13 @@ public class Player : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.R) && canReload == false)
+        {
+            canReload = true;
+            StartCoroutine(Reload());
         }
 
         playerMovement();
@@ -111,5 +120,13 @@ public class Player : MonoBehaviour
         direction.y = _directionY;
         direction = transform.transform.TransformDirection(direction);
         _controller.Move(direction * _speed * Time.deltaTime);
+    }
+
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(2f);
+        currentAmmo = maxAmmo;
+        canReload = false;
     }
 }
