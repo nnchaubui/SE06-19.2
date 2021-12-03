@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
     private float _jumpHeight = 3.5f;
 
     private float _directionY;
+
+    [SerializeField]
+    private float doubleJumpMultiplier=  0.5f;
+
+    private bool _canDoubleJump = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +51,24 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
 
-        if (Input.GetButtonDown("Jump") && _controller.isGrounded)
+        if (_controller.isGrounded)
         {
-            _directionY = _jumpHeight;
+            _canDoubleJump = true;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                _directionY = _jumpHeight;
+            }
         }
+        else
+        {
+            if (Input.GetButtonDown("Jump") && _canDoubleJump)
+            {
+                _directionY = _jumpHeight * doubleJumpMultiplier;
+                _canDoubleJump = false;
+            }
+        }
+        
 
         _directionY -= _gravity * Time.deltaTime;
 
