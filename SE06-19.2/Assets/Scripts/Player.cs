@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     private float doubleJumpMultiplier=  0.5f;
 
     private bool _canDoubleJump = false;
+
+
+    [SerializeField]
+    private GameObject _muzzleFlash;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,15 +38,20 @@ public class Player : MonoBehaviour
     {
 
         // if left click --> cast ray from center point of main cammera
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            Debug.Log("a");
+            _muzzleFlash.SetActive(true);
+
             Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hitInfo;
             if(Physics.Raycast(rayOrigin, out hitInfo))
             {
                 Debug.Log("Raycast hit: " + hitInfo.transform.name);
             }
+        }
+        else
+        {
+            _muzzleFlash.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
