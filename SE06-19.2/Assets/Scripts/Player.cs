@@ -33,13 +33,23 @@ public class Player : MonoBehaviour
     void Update()
     {
 
+        // if left click --> cast ray from center point of main cammera
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("a");
+            Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hitInfo;
+            if(Physics.Raycast(rayOrigin, out hitInfo))
+            {
+                Debug.Log("Raycast hit: " + hitInfo.transform.name);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-
-
 
         playerMovement();
     }
