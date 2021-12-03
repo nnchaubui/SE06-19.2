@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject _muzzleFlash;
+
+    [SerializeField]
+    private GameObject _hitMarker;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,8 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(rayOrigin, out hitInfo))
             {
                 Debug.Log("Raycast hit: " + hitInfo.transform.name);
+
+                Instantiate(_hitMarker, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             }
         }
         else
