@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     private int maxAmmo = 100;
 
     private bool canReload = false;
+
+
+    private UIManager _uiManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,8 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         currentAmmo = maxAmmo;
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -78,6 +83,7 @@ public class Player : MonoBehaviour
     {
         _muzzleFlash.SetActive(true);
         currentAmmo--;
+        _uiManager.UpdateAmmo(currentAmmo);
         Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitInfo;
         if (Physics.Raycast(rayOrigin, out hitInfo))
@@ -127,6 +133,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         currentAmmo = maxAmmo;
+        _uiManager.UpdateAmmo(currentAmmo);
         canReload = false;
     }
 }
