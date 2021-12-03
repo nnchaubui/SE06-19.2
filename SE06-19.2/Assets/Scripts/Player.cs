@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, 0, verticalInput);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && _controller.isGrounded)
         {
             _directionY = _jumpHeight;
         }
