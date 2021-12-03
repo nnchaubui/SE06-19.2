@@ -23,10 +23,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        calculateMovement();
+        playerMovement();
     }
 
-    void calculateMovement()
+    void playerMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("Space");
             _directionY = _jumpHeight;
         }
 
