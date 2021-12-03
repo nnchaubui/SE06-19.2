@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Raycast hit: " + hitInfo.transform.name);
 
-                Instantiate(_hitMarker, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                GameObject hitMarker = (GameObject) Instantiate(_hitMarker, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+                Destroy(hitMarker, 1f);
             }
         }
         else
