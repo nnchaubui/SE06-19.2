@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private float _directionY;
 
     [SerializeField]
-    private float doubleJumpMultiplier=  0.5f;
+    private float doubleJumpMultiplier = 0.5f;
 
     private bool _canDoubleJump = false;
 
@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject _hitMarker;
+
+    [SerializeField]
+    private int currentAmmo;
+    private int maxAmmo = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,8 @@ public class Player : MonoBehaviour
         // hide mouse cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentAmmo = maxAmmo;
     }
 
     // Update is called once per frame
@@ -41,19 +47,9 @@ public class Player : MonoBehaviour
     {
 
         // if left click --> cast ray from center point of main cammera
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && currentAmmo > 0) 
         {
-            _muzzleFlash.SetActive(true);
-
-            Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hitInfo;
-            if(Physics.Raycast(rayOrigin, out hitInfo))
-            {
-                Debug.Log("Raycast hit: " + hitInfo.transform.name);
-
-                GameObject hitMarker = (GameObject) Instantiate(_hitMarker, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-                Destroy(hitMarker, 1f);
-            }
+            Shoot();
         }
         else
         {
@@ -67,6 +63,21 @@ public class Player : MonoBehaviour
         }
 
         playerMovement();
+    }
+
+    void Shoot()
+    {
+        _muzzleFlash.SetActive(true);
+        currentAmmo--;
+        Ray rayOrigin = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hitInfo;
+        if (Physics.Raycast(rayOrigin, out hitInfo))
+        {
+            Debug.Log("Raycast hit: " + hitInfo.transform.name);
+
+            GameObject hitMarker = (GameObject)Instantiate(_hitMarker, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Destroy(hitMarker, 1f);
+        }
     }
 
     void playerMovement()
@@ -93,7 +104,7 @@ public class Player : MonoBehaviour
                 _canDoubleJump = false;
             }
         }
-        
+
 
         _directionY -= _gravity * Time.deltaTime;
 
