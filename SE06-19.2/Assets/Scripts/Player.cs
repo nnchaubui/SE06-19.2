@@ -35,6 +35,9 @@ public class Player : MonoBehaviour
 
 
     private UIManager _uiManager;
+
+    public string NickName { get; internal set; }
+
     // Start is called before the first frame update
     void Start()
     {
