@@ -1,34 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
 
 public class PlayerManager : MonoBehaviour
 {
+	PhotonView PV;
 
-    PhotonView PV;
-    GameObject controller;
+	GameObject controller;
 
-    private void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
-    private void Start()
-    {
-        if (PV.IsMine)
-        {
-            CreateController();
-        }
-    }
+	void Awake()
+	{
+		PV = GetComponent<PhotonView>();
+	}
 
-    void CreateController()
-    {
-        //instantiating player controller
-        controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), Vector3.zero, Quaternion.identity, 0, new object[] { PV.ViewID });
-    }
+	void Start()
+	{
+		if (PV.IsMine)
+		{
+			CreateController();
+		}
+	}
 
-    public void Die()
-    {
-        PhotonNetwork.Destroy(controller);
-        CreateController();
-    }
+	void CreateController()
+	{
+		Transform spawnpoint = SpawnManager.Instance.GetSpawnpoint();
+		controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
+	}
+
+	public void Die()
+	{
+		PhotonNetwork.Destroy(controller);
+		CreateController();
+	}
 }

@@ -97,6 +97,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
             items[itemIndex].Use();
         }
 
+        if (transform.position.y < -20f)
+        {
+            Die();
+        }
+
     }
     
     void Look()
