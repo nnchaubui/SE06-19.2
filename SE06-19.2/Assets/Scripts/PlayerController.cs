@@ -5,6 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject cameraHolder;
     [SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
+    [SerializeField] Item[] items;
+
+    int itemIndex;
+    int previousItemIndex = -1;
+
+
     float verticalLookRotation;
     bool grounded;
     Vector3 smoothMoveVelocity;
@@ -20,7 +26,11 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        if (!PV.IsMine)
+        if (PV.IsMine)
+        {
+            EquipItem(0);
+        }
+        else
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
             Destroy(rb);
@@ -63,6 +73,20 @@ public class PlayerController : MonoBehaviour
     public void setGroundedState(bool _grounded)
     {
         grounded = _grounded;
+    }
+
+    void EquipItem(int _index)
+    {
+        itemIndex = _index;
+
+        items[itemIndex].itemGameObject.SetActive(true);
+
+        if (previousItemIndex != -1)
+        {
+            items[previousItemIndex].itemGameObject.SetActive(false);
+        }
+
+        previousItemIndex = itemIndex;
     }
 
 
