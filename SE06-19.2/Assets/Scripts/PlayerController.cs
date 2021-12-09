@@ -46,6 +46,15 @@ public class PlayerController : MonoBehaviour
         Look();
         Move();
         Jump();
+
+        for(int i = 0; i < items.Length; i++)
+        {
+            if (Input.GetKeyDown((i + 1).ToString()))
+            {
+                EquipItem(i);
+                break;
+            }
+        }
     }
     
     void Look()
@@ -60,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
+        moveAmount = Vector3.SmoothDamp(moveAmount, moveDir * (Input.GetKey(KeyCode.E) ? sprintSpeed : walkSpeed), ref smoothMoveVelocity, smoothTime);
     }
 
     void Jump()
@@ -77,6 +86,10 @@ public class PlayerController : MonoBehaviour
 
     void EquipItem(int _index)
     {
+        if (_index == previousItemIndex)
+        {
+            return;
+        }
         itemIndex = _index;
 
         items[itemIndex].itemGameObject.SetActive(true);
