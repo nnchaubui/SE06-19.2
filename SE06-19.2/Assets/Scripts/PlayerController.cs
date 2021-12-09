@@ -1,7 +1,10 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject cameraHolder;
     [SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
@@ -109,6 +112,13 @@ public class PlayerController : MonoBehaviour
     {
         grounded = _grounded;
     }
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        if (!PV.IsMine && targetPlayer == PV.Owner)
+        {
+            EquipItem((int)changedProps["itemIndex"]);
+        }
+    }
 
     void EquipItem(int _index)
     {
@@ -126,9 +136,17 @@ public class PlayerController : MonoBehaviour
         }
 
         previousItemIndex = itemIndex;
+
+
+        if (PV.IsMine)
+        {
+            Hashtable hash = new Hashtable();
+            hash.Add("itemIndex", itemIndex);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        }
     }
 
-
+    
     void FixedUpdate()
     {
         if (!PV.IsMine)
