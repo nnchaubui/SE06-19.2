@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OpenMenu(string menuName)
     {
-        for(int i = 0; i < menus.Length; i++)
+        for (int i = 0; i < menus.Length; i++)
         {
             if (menus[i].menuName == menuName)
             {
