@@ -9,6 +9,7 @@ public class Loading : MonoBehaviour
     [SerializeField] float speed = 200f;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] TextMeshProUGUI textNormal;
+    [SerializeField] RectTransform fxHolder;
 
     private RectTransform rect;
     private Image img;
@@ -29,6 +30,7 @@ public class Loading : MonoBehaviour
 
         img.fillAmount += Time.deltaTime * speed;
         a = (int)(img.fillAmount * 101);
+        fxHolder.rotation = Quaternion.Euler(new Vector3(0f, 0f, -img.fillAmount * 360));
 
         if(img.fillAmount != 1f)
         {
