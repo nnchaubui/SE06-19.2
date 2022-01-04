@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
     int itemIndex;
     int previousItemIndex = -1;
 
+    public Vector3 jump;
 
     float verticalLookRotation;
     bool grounded;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
     {
         rb = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
 
         playerManager =PhotonView.Find((int)PV.InstantiationData[0]).GetComponent<PlayerManager>();
     }
@@ -127,7 +129,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
     {
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            rb.AddForce(transform.up * jumpForce);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            grounded = false;
         }
     }
     public void setGroundedState(bool _grounded)
@@ -207,5 +210,10 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
     void Die()
     {
         playerManager.Die();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        grounded = true;
     }
 }
