@@ -936,13 +936,14 @@ MonoBehaviour:
   mouseSensitivity: 3
   sprintSpeed: 6
   walkSpeed: 3
-  jumpForce: 300
+  jumpForce: 5
   smoothTime: 0.15
   items:
   - {fileID: 7489959446900156882}
   - {fileID: 2645410884932309101}
   - {fileID: 7735761548777625814}
   - {fileID: 1818536306301833872}
+  jump: {x: 0, y: 0, z: 0}
 --- !u!54 &-906473452674771333
 Rigidbody:
   m_ObjectHideFlags: 0
