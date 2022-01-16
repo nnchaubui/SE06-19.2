@@ -9,9 +9,15 @@ A multiplayer first-person shooter game based on Unity3D.
 
 # Video Demo
 [![FPS demo](Demos/1.png)](https://www.youtube.com/watch?v=Wyy2JmqJWXM "FPS demo")
+
+# Screenshots
 ![fps1](Demos/2.png)
-![fps1](Demos/3.png)
-![fps1](Demos/4.png)
+![fps2](Demos/3.png)
+![fps3](Demos/1.png)
+
+# Binary download
+
+You can download the latest compiled binary here: https://github.com/nnchaubui/SE06-19.2/releases
 # Game logic and functionalities
 
 + Create Room Panel
@@ -41,6 +47,9 @@ A multiplayer first-person shooter game based on Unity3D.
 
 + Bullet effects: Bullets hitting materials will cause effects
 
+# Working features
+- Multiplayer
+- Shooting, Spawning
 
 # Script files
 + Damageable.cs
@@ -82,6 +91,7 @@ A multiplayer first-person shooter game based on Unity3D.
 
 
 # Game Mechanism
+Shooting each others until die lol.
  
 # Hotkeys
 + WASD: Player Control
@@ -89,7 +99,13 @@ A multiplayer first-person shooter game based on Unity3D.
 + 1,2,3,4... or scroll mousewheel: Change betweens guns
 + Space: Jump
 
+# Credits
+- Map: https://assetstore.unity.com/packages/3d/environments/industrial/rpg-fps-game-assets-for-pc-mobile-industrial-set-v3-0-101429
+- Gun: https://assetstore.unity.com/packages/3d/props/guns/free-fps-weapon-akm-180663
+- Photon Engine: https://forum.photonengine.com/
 
 # Special Thanks
+- Many many youtube videos.
+- Mr.Freddie Nguyen for helping us to know more about Software Engineering.
 
 # Play the Game
