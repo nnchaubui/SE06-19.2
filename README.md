@@ -1,6 +1,19 @@
 # SE06-19.2
 A multiplayer first-person shooter game based on Unity3D. 
 
+# Table of Contents
+- [Requirements](#requirements)
+- [Video Demo](#video-demo)
+- [Screenshots](#screenshots)
+- [Binary download](#binary-download)
+- [Game logic and functionalities](#game-logic-and-functionalities)
+- [Working features](#working-features)
+- [Script files](#script-files)
+- [Game Mechanism](#game-mechanism)
+- [Hotkeys](#hotkeys)
+- [Credits](#credits)
+- [Special Thanks](#special-thanks)
+- [Play the Game](#play-the-game)
 # Requirements
 1. Unity 2020.3.19f1 (64-bit)
 2. Visual Studio 2019
@@ -11,9 +24,10 @@ A multiplayer first-person shooter game based on Unity3D.
 [![FPS demo](Demos/1.png)](https://www.youtube.com/watch?v=Wyy2JmqJWXM "FPS demo")
 
 # Screenshots
-![fps1](Demos/2.png)
-![fps2](Demos/3.png)
-![fps3](Demos/1.png)
+![fps1](Demos/1.png)
+![fps2](Demos/2.png)
+![fps3](Demos/3.png)
+![fps4](Demos/4.png)
 
 # Binary download
 
