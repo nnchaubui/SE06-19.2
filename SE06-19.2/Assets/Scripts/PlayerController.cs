@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
     }
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         if (PV.IsMine)
         {
             EquipItem(0);
@@ -55,6 +57,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         if (!PV.IsMine)
         {
             return;
@@ -115,7 +122,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, Damageable
         transform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * mouseSensitivity);
 
         verticalLookRotation += Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90f, 90f);
+        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -55f, 55f);
 
         cameraHolder.transform.localEulerAngles = Vector3.left * verticalLookRotation;
     }
