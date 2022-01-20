@@ -7,18 +7,23 @@ using UnityEngine;
 public class PlayerNameManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField usernameInput;
-    
-    public void OnUsernameInputValueChange()
+
+    private void Start()
     {
-        string playerName = usernameInput.text;
-        if (string.IsNullOrWhiteSpace(playerName))
+        if (PlayerPrefs.HasKey("username"))
         {
-            PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+            usernameInput.text = PlayerPrefs.GetString("username");
+            PhotonNetwork.NickName = PlayerPrefs.GetString("username");
         }
         else
         {
-            PhotonNetwork.NickName = playerName;
+            usernameInput.text = "Player " + Random.Range(0, 1000).ToString("0000");
+            OnUsernameInputValueChange();
         }
-        
+    }
+    public void OnUsernameInputValueChange()
+    {
+        PhotonNetwork.NickName = usernameInput.text;
+        PlayerPrefs.SetString("username", usernameInput.text);
     }
 }
