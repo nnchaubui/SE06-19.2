@@ -7,6 +7,7 @@ A multiplayer first-person shooter game based on Unity3D.
 - [Screenshots](#screenshots)
 - [Binary download](#binary-download)
 - [Game logic and functionalities](#game-logic-and-functionalities)
+- [User View](#user-view)
 - [Working features](#working-features)
 - [Script files](#script-files)
 - [Game Mechanism](#game-mechanism)
@@ -61,6 +62,9 @@ You can download the latest compiled binary here: https://github.com/nnchaubui/S
 
 + Bullet effects: Bullets hitting materials will cause effects
 
+# User view
+![User View](Demos/User_view.png)
+
 # Working features
 - Multiplayer
 - Shooting, Spawning
@@ -102,7 +106,6 @@ You can download the latest compiled binary here: https://github.com/nnchaubui/S
     - Manage where the Player's will spawn (by random).
 + SpawnPoint.cs
     - Create Spawnpoints.
-
 
 # Game Mechanism
 Shooting each others until die lol.
