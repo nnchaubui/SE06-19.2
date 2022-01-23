@@ -7,7 +7,7 @@ A multiplayer first-person shooter game based on Unity3D.
 - [Screenshots](#screenshots)
 - [Binary download](#binary-download)
 - [Game logic and functionalities](#game-logic-and-functionalities)
-- [User View](#user-view)
+- [Use Case](#use-case)
 - [Working features](#working-features)
 - [Script files](#script-files)
 - [Class diagram](#class-diagram)
@@ -33,8 +33,8 @@ A multiplayer first-person shooter game based on Unity3D.
 
 
 # Binary download
-
 You can download the latest compiled binary here: https://github.com/nnchaubui/SE06-19.2/releases
+
 # Game logic and functionalities
 
 + Start Panel
@@ -53,24 +53,20 @@ You can download the latest compiled binary here: https://github.com/nnchaubui/S
     - A **gun (Riffle)** is always shown on the bottom right corner in front of everything you can see.
     - A green **shooting sight** is always in the center of the screen.
     - A **minimap** is always on the top right corner of the screen.
-
 + Player Movement
     - Walking and Running
     - Jumping
     - Dying
-
 + Gun Models: There're 4 types of guns which was from **Unity Assets Store**
     - Riffle
     - Sniper
     - Heavy
     - Pistol
-
 + Networking: This game uses **Photon Unity Networking 2**, which is a good network controller from Unity Assets Store. For the **free version**, it allows upto 20 players to play in real-time.
-
 + Bullet effects: Bullets hitting materials will cause effects
 
-# User View
-![User View](Demos/User_view.png)
+# Use Case
+![Use Case](Demos/User_view.png)
 Photon provides peer-to-peer multiplayer as a service. This means that there is no 'master server'; therefore instead of a unique source of truth for what is happening in the game, every client manages networked game objects (NGOs).
 
 Each NGO synchronizes state (position, rotation, animation) and will message session-wise clones via RPC (remote procedure call)
@@ -79,7 +75,6 @@ Photon provides its own 'Instantiate' and 'Destroy' methods thereby a client cre
 
 # Working features
 - Multiplayer
-- Shooting, Spawning
 
 # Script files
 + Damageable.cs
@@ -124,22 +119,27 @@ Photon provides its own 'Instantiate' and 'Destroy' methods thereby a client cre
 ![Class diagram](Demos/Class_diagram.png)
 
 # Game Mechanism
-Shooting each others until die lol.
+Shooting each others until you get bored of our game.
  
 # Hotkeys
 + WASD: Player Control
 + E: Increse Player Speed
 + 1,2,3,4... or scroll mousewheel: Change betweens guns
 + Space: Jump
++ ESC: Return the mouse cursor.
 
 # Credits
 - Map: https://assetstore.unity.com/packages/3d/environments/industrial/rpg-fps-game-assets-for-pc-mobile-industrial-set-v3-0-101429
 - Gun: https://assetstore.unity.com/packages/3d/props/guns/free-fps-weapon-akm-180663
 - Photon Engine: https://forum.photonengine.com/
+- FPS Tutorials: https://www.youtube.com/watch?v=UK57qdq_lak&list=PLPV2KyIb3jR5PhGqsO7G4PsbEC_Al-kPZ
 
 # Special Thanks
 - Many many youtube videos.
 - Mr.Freddie Nguyen for helping us to know more about Software Engineering.
 
 # Things to update, need to change
-# Play the Game
+- Player's Animation.
+- Maybe more character's outfits.
+- Need much more actions, weapons for a better FPS game .
+
