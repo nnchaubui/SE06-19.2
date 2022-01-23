@@ -22,7 +22,7 @@ A multiplayer first-person shooter game based on Unity3D.
 4. Photon Engine
 
 # Video Demo
-[![FPS demo](Demos/1.png)](https://www.youtube.com/watch?v=Wyy2JmqJWXM "FPS demo")
+[![FPS demo](Demos/youtube.png)](https://www.youtube.com/watch?v=Wyy2JmqJWXM "FPS demo")
 
 # Screenshots
 ![fps1](Demos/1.png)
