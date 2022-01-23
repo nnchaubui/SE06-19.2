@@ -22,7 +22,7 @@ A multiplayer first-person shooter game based on Unity3D.
 4. Photon Engine
 
 # Video Demo
-[![FPS demo](Demos/1.png)](https://www.youtube.com/watch?v=Wyy2JmqJWXM "FPS demo")
+[![FPS demo](Demos/youtube.png)](https://youtu.be/LeXe6MkAfcs "FPS demo")
 
 # Screenshots
 ![fps1](Demos/1.png)
@@ -30,21 +30,27 @@ A multiplayer first-person shooter game based on Unity3D.
 ![fps3](Demos/3.png)
 ![fps4](Demos/4.png)
 
+
 # Binary download
 
 You can download the latest compiled binary here: https://github.com/nnchaubui/SE06-19.2/releases
 # Game logic and functionalities
 
++ Start Panel
+    - Input your name and click **Tutorial** for more infomation about our game.
+    - To find the room you want to join, click **Find Room**.
+    - To create a room on your own, click **Create Room**.
+    - To quit game, click **Quit Game**.
 + Create Room Panel
-    - Input your room name and then your player's name will be auto-created.
+    - Input your room name.
     - Click **Start Room** to join a room.
 + Find Room Panel
     - Input the room you want to join
     - You will be redirect the room you haved filled in the input panel.
 + Game Interface
-    - **Player's HP** is on the top left corner.
+    - **Player's HP**, your **Username** is on the top left corner.
     - A **gun (Riffle)** is always shown on the bottom right corner in front of everything you can see.
-    - A red **shooting sight** is always in the center of the screen.
+    - A green **shooting sight** is always in the center of the screen.
     - A **minimap** is always on the top right corner of the screen.
 
 + Player Movement
@@ -62,8 +68,13 @@ You can download the latest compiled binary here: https://github.com/nnchaubui/S
 
 + Bullet effects: Bullets hitting materials will cause effects
 
-# User view
+# User View
 ![User View](Demos/User_view.png)
+Photon provides peer-to-peer multiplayer as a service. This means that there is no 'master server'; therefore instead of a unique source of truth for what is happening in the game, every client manages networked game objects (NGOs).
+
+Each NGO synchronizes state (position, rotation, animation) and will message session-wise clones via RPC (remote procedure call)
+
+Photon provides its own 'Instantiate' and 'Destroy' methods thereby a client creates/destroys NGOs, such as an avatar representing the player, or a projectile.
 
 # Working features
 - Multiplayer
@@ -125,4 +136,5 @@ Shooting each others until die lol.
 - Many many youtube videos.
 - Mr.Freddie Nguyen for helping us to know more about Software Engineering.
 
+# Things to update, need to change
 # Play the Game
