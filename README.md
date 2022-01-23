@@ -10,6 +10,7 @@ A multiplayer first-person shooter game based on Unity3D.
 - [User View](#user-view)
 - [Working features](#working-features)
 - [Script files](#script-files)
+- [Class diagram](#class-diagram)
 - [Game Mechanism](#game-mechanism)
 - [Hotkeys](#hotkeys)
 - [Credits](#credits)
@@ -117,6 +118,10 @@ Photon provides its own 'Instantiate' and 'Destroy' methods thereby a client cre
     - Manage where the Player's will spawn (by random).
 + SpawnPoint.cs
     - Create Spawnpoints.
+
+# Class diagram
+
+![Class diagram](Demos/Class_diagram.png)
 
 # Game Mechanism
 Shooting each others until die lol.
